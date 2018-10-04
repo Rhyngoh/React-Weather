@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 
 const CurrentWeather = props => {
+	const weatherIcon = `http://openweathermap.org/img/w/${props.current.weather[0].icon}.png`;
 	return (
 		<div>
 			{props.current.name && 
 			<Card centered>
 				<Card.Content>
+					<Image floated='right' src={weatherIcon} />
 					<Card.Header>
 						Current Weather in {props.current.name}
 					</Card.Header>
 					<Card.Description>
-						Weather: {props.current.weather[0].main}
+						Weather: {props.current.weather[0].main} 
 					</Card.Description>
 					<Card.Description>
 						{props.current.main.temp}&#176;F
