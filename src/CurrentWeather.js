@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import { Card, Image } from 'semantic-ui-react';
 
 const CurrentWeather = props => {
+	const date = new Date(props.current.dt*1000);
+	const day = date.getDate();
+	const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dev'];
+	const month = months[date.getMonth()];
+	const formattedDate = month + ' ' + day;
 	const weatherIcon = `http://openweathermap.org/img/w/${props.current.weather[0].icon}.png`;
 	return (
 		<div>
@@ -11,7 +16,7 @@ const CurrentWeather = props => {
 				<Card.Content>
 					<Image floated='right' src={weatherIcon} />
 					<Card.Header>
-						Current Weather in {props.current.name}
+						{formattedDate}
 					</Card.Header>
 					<Card.Description>
 						Weather: {props.current.weather[0].main} 
